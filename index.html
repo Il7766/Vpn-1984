@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подключение VPN 1984</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0b1220;
+    color: #e5e7eb;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .wrap {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0.4rem;
+  }
+  .logo svg { width: 36px; height: 36px; }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: #f9fafb;
+    margin-bottom: 4px;
+  }
+
+  .sub {
+    font-size: 13px;
+    color: #6b7280;
+    text-align: center;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+  }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+
+  .card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .num {
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(34,197,94,0.1);
+    border: 1.5px solid rgba(34,197,94,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #22c55e;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .body { flex: 1; }
+
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f3f4f6;
+    margin-bottom: 4px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+
+  .step-desc strong {
+    color: #e5e7eb;
+    font-weight: 500;
+  }
+
+  /* Image slot */
+  .img-slot {
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #1f2937;
+    background: #0d1525;
+  }
+
+  .img-slot img {
+    width: 100%;
+    display: block;
+  }
+
+  .img-placeholder {
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Download button */
+  .btn-dl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    background: #22c55e;
+    color: #052e16;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .btn-dl:hover { background: #16a34a; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #1f2937;
+    margin: 4px 0;
+  }
+
+  /* Warning card */
+  .warn-card {
+    background: rgba(234,179,8,0.06);
+    border: 1px solid rgba(202,138,4,0.25);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+  }
+
+  .warn-head {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ca8a04;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .warn-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .warn-list li {
+    font-size: 13px;
+    color: #9ca3af;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ca8a04;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="logo">
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="16" stroke="#22c55e" stroke-width="1.5" opacity="0.25"/>
+      <ellipse cx="18" cy="18" rx="7" ry="16" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+      <circle cx="18" cy="18" r="16" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+      <path d="M4 12 Q18 16 32 12" stroke="#22c55e" stroke-width="1" fill="none" stroke-dasharray="2 1.5"/>
+      <path d="M3 24 Q18 20 33 24" stroke="#22c55e" stroke-width="1" fill="none" stroke-dasharray="2 1.5"/>
+      <circle cx="18" cy="18" r="2.5" fill="#22c55e"/>
+    </svg>
+  </div>
+
+  <h1>Подключение VPN 1984</h1>
+  <p class="sub">Пошаговая инструкция · HAPP</p>
+
+  <div class="steps">
+
+    <!-- Шаг 1 -->
+    <div class="card">
+      <div class="num">1</div>
+      <div class="body">
+        <p class="step-title">Установите приложение</p>
+        <p class="step-desc">Скачайте приложение HAPP из магазина на ваш телефон или компьютер.</p>
+        <a class="btn-dl" href="#">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2v8M5 8l3 3 3-3" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 13h10" stroke="#052e16" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Скачать приложение
+        </a>
+      </div>
+    </div>
+
+    <!-- Шаг 2 -->
+    <div class="card">
+      <div class="num">2</div>
+      <div class="body">
+        <p class="step-title">Скопируйте ссылку</p>
+        <p class="step-desc">Скопируйте ссылку-конфигурацию, которую вам прислали в мессенджере или на почте.</p>
+      </div>
+    </div>
+
+    <!-- Шаг 3 -->
+    <div class="card">
+      <div class="num">3</div>
+      <div class="body">
+        <p class="step-title">Откройте приложение</p>
+        <p class="step-desc">Запустите HAPP и нажмите кнопку <strong>«+»</strong> в правом верхнем углу экрана.</p>
+        <div class="img-slot">
+          <img src="step1.jpg" alt="Кнопка + в приложении HAPP" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <!-- Шаг 4 -->
+    <div class="card">
+      <div class="num">4</div>
+      <div class="body">
+        <p class="step-title">Вставьте ссылку</p>
+        <p class="step-desc">Выберите пункт <strong>«Вставить из буфера обмена»</strong> — конфигурация добавится автоматически.</p>
+        <div class="img-slot">
+          <img src="step2.jpg" alt="Вставка из буфера обмена" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <!-- Шаг 5 -->
+    <div class="card">
+      <div class="num">5</div>
+      <div class="body">
+        <p class="step-title">Подключитесь</p>
+        <p class="step-desc">Нажмите кнопку подключения. Разрешите добавление VPN-конфигурации, если появится запрос от системы.</p>
+        <div class="img-slot">
+          <img src="step3.jpg" alt="Кнопка подключения" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Предупреждение -->
+    <div class="warn-card">
+      <p class="warn-head">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M8 2L14.9 14H1.1L8 2Z" stroke="#ca8a04" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M8 7v3" stroke="#ca8a04" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="8" cy="12" r="0.7" fill="#ca8a04"/>
+        </svg>
+        Если не работает
+      </p>
+      <ul class="warn-list">
+        <li><span class="dot"></span>Убедитесь, что ссылка скопирована целиком, без обрезки</li>
+        <li><span class="dot"></span>Перезапустите приложение HAPP и попробуйте снова</li>
+        <li><span class="dot"></span>Вставьте ссылку ещё раз через буфер обмена</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
